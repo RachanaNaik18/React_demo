@@ -1,15 +1,40 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 export default function Navbar(props) {
+  // const [getColor, setColor] = useState('light')
+
+  // const colorPallete=(color)=>{
+  //   if(color==="red"){
+  //     document.body.style.backgroundColor = 'blue'
+  //     document.body.style.color = 'white'
+  //     props.showAlert("Red pallete has been enabled" , "success")
+  //   }
+  //   else if(color==="green"){
+  //     document.body.style.backgroundColor = 'green'
+  //     document.body.style.color = 'white'
+  //     props.showAlert("Green pallete has been enabled" , "success")
+  //   }
+  //   else if(color==="pink"){
+  //     document.body.style.backgroundColor = 'pink'
+  //     document.body.style.color = 'black'
+  //     props.showAlert("Pink pallete has been enabled" , "success")
+  //   }
+  //   else{
+  //     document.body.style.backgroundColor = 'light'
+  //     document.body.style.color = 'black'
+  //     props.showAlert("light mode has been enabled" , "success")
+  //   }
+  // }
   return (
     <nav
       className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
     >
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/">
           {props.title}
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -24,20 +49,20 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">
+              <Link className="nav-link active" aria-current="page" to="/">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <Link className="nav-link" to="/about">
                 About
-              </a>
+              </Link>
             </li>
           </ul>
-          <div class="nav-item dropdown ">
+          {/* <div class="nav-item dropdown ">
             <a
               class="nav-link dropdown-toggle"
-              href="#"
+              href="/"
               role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
@@ -48,7 +73,8 @@ export default function Navbar(props) {
               class={`dropdown-menu bg-${props.mode === "light" ? "light" : "dark"
                 } text-${props.mode === "light" ? "dark" : "light"} `}
             >
-              <li>
+              <li style={{backgroundColor: "#c90505",
+                  color:"white"}}>
                 <div
                   class={`form-check form-switch text-${props.mode === "light" ? "dark" : "light"
                     } mx-3`}
@@ -57,38 +83,36 @@ export default function Navbar(props) {
                     className="form-check-input"
                     type="checkbox"
                     role="switch"
-                    onClick={props.togglemode}
+                    onClick={colorPallete("red")}
                     id="flexSwitchCheckDefault"
                   />
                   <label
                     className="form-check-label"
                     for="flexSwitchCheckDefault"
                   >
-                    Red Mode 
+                    Red Mode
                   </label>
                 </div>
               </li>
-              <li>
+              <li style={{backgroundColor: "green",color:"white"}} >
                 <div
-                  class={`form-check form-switch text-${props.mode === "light" ? "dark" : "light"
-                    } mx-3`}
-                >
+                  class={`form-check form-switch text-${props.mode === "light" ? "dark" : "light"} mx-3`} >
                   <input
                     className="form-check-input"
                     type="checkbox"
                     role="switch"
-                    onClick={props.togglemode}
+                    onClick={colorPallete("green")}
                     id="flexSwitchCheckDefault"
                   />
                   <label
                     className="form-check-label"
                     for="flexSwitchCheckDefault"
                   >
-                    Green Mode 
+                    Green Mode
                   </label>
                 </div>
               </li>
-              <li>
+              <li style={{backgroundColor: "lightpink"}} >
                 <div
                   class={`form-check form-switch text-${props.mode === "light" ? "dark" : "light"
                     } mx-3`}
@@ -97,19 +121,19 @@ export default function Navbar(props) {
                     className="form-check-input"
                     type="checkbox"
                     role="switch"
-                    onClick={props.togglemode}
+                    onClick={colorPallete("pink")}
                     id="flexSwitchCheckDefault"
                   />
                   <label
                     className="form-check-label"
                     for="flexSwitchCheckDefault"
                   >
-                    Pink Mode 
+                    Pink Mode
                   </label>
                 </div>
               </li>
             </ul>
-          </div>
+          </div> */}
           <div
             class={`form-check form-switch text-${props.mode === "light" ? "dark" : "light"
               } mx-3`}

@@ -34,6 +34,7 @@ export default function TextForm(props) {
     let text = document.getElementById("myBox");
     text.select();
     navigator.clipboard.writeText(text.value);
+    document.getSelection().removeAllRanges();
     props.showAlert('Copied to clip board', "success")
 
   };
@@ -62,31 +63,35 @@ export default function TextForm(props) {
             rows="8"
           ></textarea>
         </div>
-        <button className="btn btn-primary" onClick={handleUpClick}>
+        <button disabled={text.length===0} className="btn btn-primary" onClick={handleUpClick}>
           Convert to Uppercase
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleloClick}>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleloClick}>
           Convert to Lower
         </button>
-        <button className="btn btn-primary mx-2" onClick={clear}>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={clear}>
           Clear
         </button>
-        <button className="btn btn-primary mx-2" onClick={styleChange}>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={styleChange}>
           Change Red
         </button>
-        <button className="btn btn-primary mx-2" onClick={copyHandle}>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={copyHandle}>
           Copy Text
         </button>
-        <button className="btn btn-primary mx-2" onClick={extraSpace}>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={extraSpace}>
           Space Handler
         </button>
       </div>
       <div className="container">
         <h2>Your Text Summary</h2>
         <p>
-          {text.split(" ").length} words and {text.length} characters
+          {text.split(" ").filter((element)=>{
+            return element.length!==0
+          }).length} words and {text.length} characters
         </p>
-        <p>Time required to read {0.008 * text.split(" ").length}</p>
+        <p>Time required to read {0.008 * text.split(" ").filter((element)=>{
+            return element.length!==0
+          }).length}</p>
         <h2>Preview: </h2>
         <p>{text.length>0?text:"Enter Something in your text box"}</p>
       </div>
